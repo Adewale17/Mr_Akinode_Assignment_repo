@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>program to check grade</title>
+</head>
+<body>
+    <h2>Check your CGPA</h2>
+    <form method="post" action="">
+        Enter CGPA: <input type="text" name="cgpa"><br>
+        <input type="submit" name="submit" value="Check">
+    </form>
+
+    <?php
+    function CheckCgpa($cgpa){
+        $result = '';
+        if ($cgpa >= 4.0){
+            $result ="Excellent (A)";
+        }else if($cgpa >= 3.5 ){
+            $result = "Very Good (B+)";
+        }else if($cgpa >= 3.0 ){
+           $result = "Good (B)";
+        }else if($cgpa >= 2.5 ){
+            $result = "Fair(C+)";
+        }else if($cgpa >= 2.0 ){
+            $result = "PAss(C)";
+        }else{
+           $result = "Fail(F)";
+        }
+        return $result;
+    }
+    if(isset($_POST['submit'])) {
+        // Retrieve the input values
+        $cgpa = $_POST['cgpa'];
+
+        // Check if both inputs are numeric
+        if(is_numeric($cgpa)) {
+            // Perform addition
+            $result = CheckCgpa($cgpa);
+            echo "The CGPA is: $result";
+        } else {
+            echo "Please enter valid numeric values for both numbers.";
+        }
+    }
+    ?>
+</body>
+</html>
