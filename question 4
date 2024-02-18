@@ -1,0 +1,35 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Palindrome Checker</title>
+    </head>
+    <body>
+        <h2>Palindrome Checker</h2>
+        <form method="post" action="">
+            Enter a string: <input type="text" name="inputString">
+            <input type="submit" name="submit" value="Check">
+        </form>
+    
+        <?php
+        // Function to determine whether a string is a palindrome
+        function isPalindrome($s) {
+            $cleaned = strtolower(preg_replace('/[^A-Za-z0-9]/', '', $s)); // Remove non-alphanumeric characters and convert to lowercase
+            return $cleaned === strrev($cleaned); // Check if the cleaned string is equal to its reverse
+        }
+    
+        // Process form submission
+        if(isset($_POST['submit'])) {
+            $inputString = $_POST['inputString'];
+    
+            // Check if the input string is a palindrome
+            if (isPalindrome($inputString)) {
+                echo "<p>The string \"$inputString\" is a palindrome.</p>";
+            } else {
+                echo "<p>The string \"$inputString\" is not a palindrome.</p>";
+            }
+        }
+        ?>
+    </body>
+    </html>
+    
