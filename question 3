@@ -1,0 +1,32 @@
+<?php 
+    function twoSum($nums, $target) {
+        $map = array(); // Hash map to store elements and their indices
+        
+        // Iterate through the array
+        foreach ($nums as $index => $num) {
+            $complement = $target - $num; // Calculate the complement needed
+            
+            // Check if the complement exists in the map
+            if (array_key_exists($complement, $map)) {
+                // Return the indices of the current element and its complement
+                return array($map[$complement], $index);
+            }
+            
+            // Store the current element and its index in the map
+            $map[$num] = $index;
+        }
+        
+        // If no solution found
+        return array();
+    }
+
+    // Example usage:
+    $nums = array(2, 7, 11, 15);
+    $target = 9;
+    $result = twoSum($nums, $target);
+    if (!empty($result)) {
+        echo "Indices of the two numbers that add up to $target: " . implode(', ', $result);
+    } else {
+        echo "No two numbers add up to $target in the given array.";
+    }
+?>
