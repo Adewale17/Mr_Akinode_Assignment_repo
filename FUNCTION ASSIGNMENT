@@ -1,0 +1,190 @@
+Question 1 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascending Order</title>
+</head>
+<body>
+    <h2>Enter Three Numbers</h2>
+    <form method="post">
+        <label for="num1">Number 1:</label>
+        <input type="text" id="num1" name="num1"><br><br>
+        
+        <label for="num2">Number 2:</label>
+        <input type="text" id="num2" name="num2"><br><br>
+        
+        <label for="num3">Number 3:</label>
+        <input type="text" id="num3" name="num3"><br><br>
+        
+        <input type="submit" name="submit" value="Sort Numbers">
+    </form>
+
+    <?php
+    // Check if form is submitted
+    if(isset($_POST['submit'])){
+        // Retrieve input values
+        $num1 = $_POST['num1'];
+        $num2 = $_POST['num2'];
+        $num3 = $_POST['num3'];
+
+        // Convert inputs to integers
+        $num1 = intval($num1);
+        $num2 = intval($num2);
+        $num3 = intval($num3);
+        // Sort numbers in ascending order
+        $numbers = array($num1, $num2, $num3);
+        sort($numbers);
+        // Output the sorted numbers
+        echo "<h2>Sorted Numbers:</h2>";
+        foreach ($numbers as $number) {
+            echo $number . "<br>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+QUESTION 2
+<?php
+
+function smallestIndex($array, $size) {
+    if ($size <= 0) {
+        return -1; // Return -1 if the array is empty or size is invalid
+    }
+    
+    $minIndex = 0; // Assume the first element is the smallest
+    for ($i = 1; $i < $size; $i++) {
+        if ($array[$i] < $array[$minIndex]) {
+            $minIndex = $i; // Update the index of the smallest element if found
+        }
+    }
+    
+    return $minIndex;
+}
+// Test the function
+$array = [5, 3, 9, 1, 7];
+$size = count($array);
+$smallestIndex = smallestIndex($array, $size);
+if ($smallestIndex != -1) {
+    echo "The smallest element is at index: " . $smallestIndex;
+} else {
+    echo "Array is empty or size is invalid.";
+}
+?>
+QUESTION 3
+<?php
+
+// Prompt the user to input a string
+echo "Enter a string: ";
+$inputString = readline();
+
+// Convert the string to uppercase using a character array
+$charArray = str_split($inputString);
+$uppercaseString = "";
+foreach ($charArray as $char) {
+    $uppercaseString .= strtoupper($char);
+}
+// Output the string in uppercase
+echo "Uppercase string: " . $uppercaseString . "\n";
+?>
+
+QUESTION 4
+<?php
+
+// Function to add two matrices
+function addMatrices($matrix1, $matrix2, $rows, $columns) {
+    $resultMatrix = array();
+    for ($i = 0; $i < $rows; $i++) {
+        for ($j = 0; $j < $columns; $j++) {
+            $resultMatrix[$i][$j] = $matrix1[$i][$j] + $matrix2[$i][$j];
+        }
+    }
+    return $resultMatrix;
+}
+
+// Function to display a matrix
+function displayMatrix($matrix, $rows, $columns) {
+    for ($i = 0; $i < $rows; $i++) {
+        for ($j = 0; $j < $columns; $j++) {
+            echo $matrix[$i][$j] . " ";
+        }
+        echo "\n";
+    }
+}
+
+// Prompt the user to enter the size of the matrices
+echo "Enter the number of rows for the matrices: ";
+$rows = intval(readline());
+echo "Enter the number of columns for the matrices: ";
+$columns = intval(readline());
+
+// Initialize matrices
+$matrix1 = array();
+$matrix2 = array();
+
+// Prompt the user to input elements for matrix 1
+echo "Enter elements for matrix 1:\n";
+for ($i = 0; $i < $rows; $i++) {
+    echo "Row " . ($i + 1) . ":\n";
+    for ($j = 0; $j < $columns; $j++) {
+        echo "Element " . ($j + 1) . ": ";
+        $matrix1[$i][$j] = intval(readline());
+    }
+}
+
+// Prompt the user to input elements for matrix 2
+echo "Enter elements for matrix 2:\n";
+for ($i = 0; $i < $rows; $i++) {
+    echo "Row " . ($i + 1) . ":\n";
+    for ($j = 0; $j < $columns; $j++) {
+        echo "Element " . ($j + 1) . ": ";
+        $matrix2[$i][$j] = intval(readline());
+    }
+}
+
+// Compute the addition of the matrices
+$resultMatrix = addMatrices($matrix1, $matrix2, $rows, $columns);
+
+// Display the result
+echo "\nMatrix 1:\n";
+displayMatrix($matrix1, $rows, $columns);
+
+echo "\nMatrix 2:\n";
+displayMatrix($matrix2, $rows, $columns);
+
+echo "\nSum of the matrices:\n";
+displayMatrix($resultMatrix, $rows, $columns);
+
+?>
+
+
+QUESTION 5
+
+
+<?php
+
+// Declare the array alpha of 50 components
+$alpha = array();
+
+// Initialize the array according to the given conditions
+for ($i = 0; $i < 50; $i++) {
+    if ($i < 25) {
+        $alpha[$i] = pow($i, 2); // Square of the index variable for the first 25 components
+    } else {
+        $alpha[$i] = 3 * $i; // Three times the index variable for the last 25 components
+    }
+}
+
+// Output the array with 10 elements per line
+echo "Array alpha:\n";
+for ($i = 0; $i < 50; $i++) {
+    echo $alpha[$i] . " ";
+    // Print a newline after every 10 elements
+    if (($i + 1) % 10 == 0) {
+        echo "\n";
+    }
+}
+
+?>
